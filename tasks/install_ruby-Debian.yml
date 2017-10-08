@@ -1,0 +1,6 @@
+---
+# `ruby-full` is ruby 2.3 on 16.04, which is sufficiently new.
+- name: install ruby
+  apt:
+    name: ruby-full
+    state: present

@@ -1,0 +1,5 @@
+---
+- name: install ruby with homebrew
+  homebrew:
+    name: ruby
+    state: present
