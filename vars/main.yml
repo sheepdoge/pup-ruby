@@ -1,3 +1,4 @@
 ---
 gem_to_install: "{{ pup_ruby_vars_gem_to_install | default([]) }}"
 gem_to_uninstall: "{{ pup_ruby_vars_gem_to_uninstall | default([]) }}"
+dotfile: "{{ pup_ruby_vars_dotfile }}"

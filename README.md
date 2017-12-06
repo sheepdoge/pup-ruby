@@ -11,6 +11,7 @@ available.
 
 - `gem_to_install`: Gems I want to install.
 - `gem_to_uninstall`: Gems I want to uinstall.
+- `dotfile`: Dotfile in which to modify $PATH.
 
 ## Requirements
 

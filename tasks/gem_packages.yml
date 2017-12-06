@@ -1,14 +1,24 @@
 ---
+- set_fact:
+    ruby_version: 2.3.0
+
+- name: ensure local ruby gem bin is in PATH
+  lineinfile:
+    path: "{{ dotfile }}"
+    state: present
+    line: "[[ \":$PATH:\" != *\":$HOME/.gem/ruby/{{ ruby_version }}/bin:\"* ]] && PATH=\"$HOME/.gem/ruby/{{ ruby_version }}/bin:$PATH\" || true"
+
 - name: install ruby gems
   gem:
     name: "{{ item }}"
     # I want this gem to be available in `/usr/...` not `~/.gem...`.
-    user_install: no
+    user_install: yes
   with_items: "{{ gem_to_install }}"
 
 - name: uninstall ruby gems
   gem:
     name: "{{ item }}"
     state: absent
-    user_install: no
+    user_install: yes
   with_items: "{{ gem_to_uninstall }}"
+
