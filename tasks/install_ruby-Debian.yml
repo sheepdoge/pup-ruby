@@ -5,7 +5,7 @@
       update_cache: yes
       cache_valid_time: 3600
 
-  # `ruby-full` is ruby 2.3 on 16.04, which is sufficiently new.
+  # `ruby-full` is ruby 2.5 on 18.04, which is sufficiently new.
   - name: install ruby
     apt:
       name: ruby-full

@@ -1,11 +1,10 @@
-# pup-ruby
+# pup-ruby-gem
 
 [sheepdoge](https://github.com/mattjmcnaughton/sheepdoge) for managing ruby
-installation.
+gems.
 
-Note, we do not attempt to manage per project ruby dependencies, instead
-installing a sufficiently new ruby version and gems which we want to be globally
-available.
+Note, we do not attempt to manage per project ruby dependencies, as we presume
+actual ruby projects will use bundle.
 
 ## Variables
 
@@ -16,4 +15,4 @@ available.
 ## Requirements
 
 If you do not already have ruby installed, you will need either `homebrew` or
-`python-apt` installed.
+`python-apt` installed if you are on Mac or Debian respectively.

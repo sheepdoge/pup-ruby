@@ -1,12 +1,21 @@
 ---
 - set_fact:
-    ruby_version: 2.5.0
+    # Specifying multiple ruby versions in this manner is pretty hacky... a
+    # better solution would be using the contents of the ~/.gem/ruby directory
+    # as the source of truth.
+    ruby_versions:
+      - 2.3.0  # Ubuntu 16.04
+      - 2.5.0  # Ubuntu 18.04
+      - 2.6  # FreeBSD
 
 - name: ensure local ruby gem bin is in PATH
   lineinfile:
     path: "{{ dotfile }}"
     state: present
-    line: "[[ \":$PATH:\" != *\":$HOME/.gem/ruby/{{ ruby_version }}/bin:\"* ]] && PATH=\"$HOME/.gem/ruby/{{ ruby_version }}/bin:$PATH\" || true"
+    # Because we specify multiple ruby versions... we only append the actual
+    # per-version gem directory to the list if it exists.
+    line: "[[ \":$PATH:\" != *\":$HOME/.gem/ruby/{{ item }}/bin:\"* && -d \"$HOME/.gem/ruby/{{ item }}\" ]] && PATH=\"$HOME/.gem/ruby/{{ item }}/bin:$PATH\" || true"
+  with_items: "{{ ruby_versions }}"
 
 - name: install ruby gems
   gem:
