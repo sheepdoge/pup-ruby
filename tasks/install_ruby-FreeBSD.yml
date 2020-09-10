@@ -1,7 +1,0 @@
----
-- name: install ruby
-  pkgng:
-    name: ruby
-    state: latest
-  become: true
-  

@@ -1,13 +1,12 @@
 ---
+# This pup is not responsible for installing ruby.
 - name: determine if ruby installed
-  command: which ruby && which gem
-  register: ruby_is_installed
-  failed_when: ruby_is_installed.rc > 1
+  command: which ruby
   changed_when: no
 
-- name: install ruby
-  include_tasks: install_ruby-{{ ansible_os_family }}.yml
-  when: ruby_is_installed.rc > 0
+- name: determine if gem installed
+  command: which gem
+  changed_when: no
 
 - name: install gem packages
   include_tasks: gem_packages.yml

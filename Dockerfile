@@ -1,13 +1,17 @@
-FROM ubuntu:16.04
+FROM ubuntu:18.04
 
 RUN apt-get update -qq
 RUN apt-get -y install \
   build-essential \
   git \
-  python \
-  python-apt \
-  python-pip \
+  python3 \
+  python3-apt \
+  python3-pip \
+  ruby-full \
   vim
+
+RUN ln -s /usr/bin/python3 /usr/bin/python
+RUN ln -s /usr/bin/pip3 /usr/bin/pip
 
 RUN pip install --upgrade pip
 RUN pip install "ansible>=2.0,<3.0"
