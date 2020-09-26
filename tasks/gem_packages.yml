@@ -7,6 +7,7 @@
       - 2.3.0  # Ubuntu 16.04
       - 2.5.0  # Ubuntu 18.04
       - 2.6  # FreeBSD
+      - 2.7.0  # Ubuntu 20.04
 
 - name: ensure local ruby gem bin is in PATH
   lineinfile:
